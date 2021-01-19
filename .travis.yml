@@ -1,0 +1,13 @@
+language: minimal
+
+git:
+  depth: false
+
+before_script:
+  chmod +x test.sh
+
+jobs:
+  include:
+    - stage: test
+      name: "Shellcheck tests"
+      script: ./test.sh

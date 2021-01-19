@@ -1,0 +1,140 @@
+## CUSTOM FUNCTIONS ##
+
+attack-url(){
+  hey -n "$2" -c 100 -m GET -t 10 "$1"
+}
+
+attack-api(){
+  hey -n "$2" -c 100 -m GET -t 10 -H "Authorization: bearer $3" "$1"
+}
+
+compress() {
+  local tmpFile="${1%/}.tar"
+  tar -cvf "${tmpFile}" --exclude=".DS_Store" "${1}" || return 1
+
+  cmd="gzip"
+
+  echo "Compressing .tar using \`${cmd}\`…"
+  "${cmd}" -v "${tmpFile}" || return 1
+  [ -f "${tmpFile}" ] && rm "${tmpFile}"
+  echo "${tmpFile}.gz created successfully."
+}
+
+copy(){
+  pbcopy < "$1"
+}
+
+disk(){
+  df -P -kHl
+}
+
+encrypt(){
+  gpg -c --cipher-algo AES256 "$1"
+}
+
+extract(){
+  tar xvf "$1"
+}
+
+ghost(){
+  cat /dev/null > ~/.bash_history && history -c && exit
+}
+
+inspect(){
+  dig +nocmd "$1" any +multiline +noall +answer && httpstat -L "$1"
+}
+
+local-ip(){
+  ipconfig getifaddr en0
+}
+
+public-ip(){
+  curl ident.me
+}
+
+search(){
+  find /Users -name "$1" 2>&1 | grep -v 'Operation not permitted'
+}
+
+track(){
+  tail -f "$1" | bat --paging=never -l log
+}
+
+transfer(){
+  wget -t 1 -qO - --method=PUT --body-file="$1" --header="Content-Type: $(file -b --mime-type "$1")" https://transfer.sh/$(basename "$1");
+  echo
+}
+
+alias list="ls -alh"
+alias record="asciinema rec"
+
+hilfe(){
+  echo "|-----------------------------------------------------------------------------------------------|"
+  echo "| command                                   | description                                       |"
+  echo "|-------------------------------------------|---------------------------------------------------|"
+  echo "| attack-url URL NUMBER_OF_REQUESTS         | Sends N concurrent requests to a URL              |"
+  echo "| attack-api URL NUMBER_OF_REQUESTS TOKEN   | Sends N concurrent requests to an API endpoint    |"
+  echo "| inspect URL                               | dig & httpstat with useful arguments              |"
+  echo "| public-ip                                 | prints the public IP                              |"
+  echo "| local-ip                                  | prints the local IP                               |"
+  echo "| encrypt                                   | encrypts a file/folder                            |"
+  echo "| decrypt                                   | decrypts an encrypted file/folder                 |"
+  echo "| compress                                  | compresses a file/folder                          |"
+  echo "| extract                                   | extracts contents of an compressed file           |"
+  echo "| copy                                      | copies contents of a file to clipboard            |"
+  echo "| bat FILE                                  | cat with wings                                    |"
+  echo "| list                                      | ls with useful arguments                          |"
+  echo "| disk                                      | df with useful arguments                          |"
+  echo "| search FILE_NAME                          | find with useful arguments                        |"
+  echo "| track FILE_NAME                           | tail -f with some bat power                       |"
+  echo "| transfer FILE_NAME                        | uploads a given file via transfer.sh              |"
+  echo "| record                                    | record via asciinema                              |"
+  echo "| ghost                                     | deletes terminal history and closes terminal      |"
+  echo "| tmate                                     | a named tmate session                             |"
+  echo "|-----------------------------------------------------------------------------------------------|"
+
+  echo
+
+  echo "|----------------|------------------------|"
+  echo "| alias          | description            |"
+  echo "|----------------|------------------------|"
+  echo "| g l            | git log                |"
+  echo "| g s            | git status             |"
+  echo "| g d            | git diff               |"
+  echo "| g ds           | git diff --staged      |"
+  echo "| g p            | git pull               |"
+  echo "| g cl           | git clone URL          |"
+  echo "| g go           | git checkout BRANCH    |"
+  echo "| g a            | git add FILE           |"
+  echo "| g c            | git commit             |"
+  echo "| g ca           | git add and commit all |"
+  echo "| g branches     | branch -a              |"
+  echo "| g remotes      | remote -v              |"
+  echo "| g amend        | commit --amend         |"
+  echo "| g contributors | shortlog --numbered    |"
+  echo "|-----------------------------------------|"
+
+  echo
+
+  echo "|---------|-------------------------------------------|"
+  echo "| command | description                               |"
+  echo "|---------|-------------------------------------------|"
+  echo "| H       | move to top of screen                     |"
+  echo "| M       | move to middle of screen                  |"
+  echo "| L       | move to bottom of screen                  |"
+  echo "| w       | jump forwards to the start of a word      |"
+  echo "| e       | jump forwards to the end of a word        |"
+  echo "| 0       | jump to the start of the line             |"
+  echo "| $       | jump to the end of the line               |"
+  echo "| gg      | go to the first line of the document      |"
+  echo "| G       | go to the last line of the document       |"
+  echo "| 5G      | go to line 5                              |"
+  echo "| yy      | yank (copy) a line                        |"
+  echo "| 2yy     | yank (copy) 2 lines                       |"
+  echo "| yw      | yank (copy) word                          |"
+  echo "| p       | put (paste) the clipboard after cursor    |"
+  echo "| dd      | delete (cut) a line                       |"
+  echo "| 2dd     | delete (cut) 2 lines                      |"
+  echo "|-----------------------------------------------------|"
+
+}

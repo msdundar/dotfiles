@@ -1,0 +1,27 @@
+{
+  "auto_indent": true,
+  "caret_extra_bottom": 0,
+  "caret_extra_top": 0,
+  "caret_extra_width": 0,
+  "caret_style": "smooth",
+  "color_scheme": "Packages/Theme - One Dark/One Dark.tmTheme",
+  "draw_white_space": "selection",
+  "ensure_newline_at_eof_on_save": true,
+  "font_size": 13,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "line_numbers": true,
+  "rulers":
+  [
+    120
+  ],
+  "smart_indent": true,
+  "spell_check": true,
+  "tab_size": 2,
+  "theme": "One Dark.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_automatic_white_space": true,
+  "trim_trailing_white_space_on_save": true
+}

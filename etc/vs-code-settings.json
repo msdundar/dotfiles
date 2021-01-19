@@ -1,0 +1,40 @@
+{
+  "explorer.confirmDelete": false,
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    120
+  ],
+  "editor.renderWhitespace": "boundary",
+  "editor.cursorStyle": "line-thin",
+  "editor.wordWrapColumn": 120,
+  "files.exclude": {
+    "**/vendor/bundle": true
+  },
+  "editor.formatOnPaste": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "medium",
+  "window.openFoldersInNewWindow": "off",
+  "terminal.external.osxExec": "iTerm.app",
+  "editor.autoIndent": false,
+  "workbench.statusBar.visible": true,
+  "workbench.startupEditor": "none",
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.renderLineHighlight": "all",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "markdown-pdf.clip.height": 0,
+  "markdown-pdf.clip.width": 0,
+  "markdown-pdf.clip.x": 0,
+  "markdown-pdf.clip.y": 0,
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.highlightStyle": "dracula.css",
+  "markdown.extension.toc.levels": "1..2",
+  "[go]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": false,
+  }
+}
