@@ -1,13 +1,15 @@
 cask_args appdir: "/Applications"
 
+tap "augmentable-dev/askgit"
+tap "aws/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
 tap "homebrew/services"
 tap "hashicorp/tap"
-tap "aws/tap"
 
 brew "asciinema"
+brew "askgit"
 brew "autoconf"
 brew "automake"
 brew "aws-sam-cli"
