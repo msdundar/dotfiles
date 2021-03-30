@@ -60,4 +60,5 @@ brew "zsh-syntax-highlighting"
 brew "wget"
 
 cask "docker"
+cask "emacs"
 cask "mounty"
