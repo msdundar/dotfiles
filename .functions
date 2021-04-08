@@ -20,6 +20,14 @@ compress() {
   echo "${tmpFile}.gz created successfully."
 }
 
+compress-fat32(){
+  zip -s 3g archive.zip "$1"
+}
+
+compress-passwd(){
+  zip -er archive.zip "$1"
+}
+
 copy(){
   pbcopy < "$1"
 }
@@ -78,17 +86,18 @@ hilfe(){
   echo "| public-ip                                 | prints the public IP                              |"
   echo "| local-ip                                  | prints the local IP                               |"
   echo "| encrypt                                   | encrypts a file/folder                            |"
-  echo "| decrypt                                   | decrypts an encrypted file/folder                 |"
-  echo "| compress                                  | compresses a file/folder                          |"
-  echo "| extract                                   | extracts contents of an compressed file           |"
-  echo "| copy                                      | copies contents of a file to clipboard            |"
+  echo "| compress FILE_OR_FOLDER                   | compresses a file/folder                          |"
+  echo "| compress-fat32 FILE_OR_FOLDER             | compresses a file/folder for fat32 (3G)           |"
+  echo "| compress-passwd FILE_OR_FOLDER            | compresses a file/folder with password protection |"
+  echo "| extract FILE_OR_FOLDER                    | extracts contents of an compressed file           |"
+  echo "| copy FILE                                 | copies contents of a file to clipboard            |"
   echo "| bat FILE                                  | cat with wings                                    |"
   echo "| list                                      | ls with useful arguments                          |"
   echo "| disk                                      | df with useful arguments                          |"
   echo "| search FILE_NAME                          | find with useful arguments                        |"
   echo "| track FILE_NAME                           | tail -f with some bat power                       |"
   echo "| transfer FILE_NAME                        | uploads a given file via transfer.sh              |"
-  echo "| record                                    | record via asciinema                              |"
+  echo "| record                                    | record with asciinema                             |"
   echo "| ghost                                     | deletes terminal history and closes terminal      |"
   echo "| tmate                                     | a named tmate session                             |"
   echo "|-----------------------------------------------------------------------------------------------|"
