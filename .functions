@@ -1,13 +1,5 @@
 ## CUSTOM FUNCTIONS ##
 
-attack-url(){
-  hey -n "$2" -c 100 -m GET -t 10 "$1"
-}
-
-attack-api(){
-  hey -n "$2" -c 100 -m GET -t 10 -H "Authorization: bearer $3" "$1"
-}
-
 compress() {
   local tmpFile="${1%/}.tar"
   tar -cvf "${tmpFile}" --exclude=".DS_Store" "${1}" || return 1
@@ -34,10 +26,6 @@ copy(){
 
 disk(){
   df -P -kHl
-}
-
-encrypt(){
-  gpg -c --cipher-algo AES256 "$1"
 }
 
 extract(){
@@ -80,12 +68,9 @@ hilfe(){
   echo "|-----------------------------------------------------------------------------------------------|"
   echo "| command                                   | description                                       |"
   echo "|-------------------------------------------|---------------------------------------------------|"
-  echo "| attack-url URL NUMBER_OF_REQUESTS         | Sends N concurrent requests to a URL              |"
-  echo "| attack-api URL NUMBER_OF_REQUESTS TOKEN   | Sends N concurrent requests to an API endpoint    |"
   echo "| inspect URL                               | dig & httpstat with useful arguments              |"
   echo "| public-ip                                 | prints the public IP                              |"
   echo "| local-ip                                  | prints the local IP                               |"
-  echo "| encrypt                                   | encrypts a file/folder                            |"
   echo "| compress FILE_OR_FOLDER                   | compresses a file/folder                          |"
   echo "| compress-fat32 FILE_OR_FOLDER             | compresses a file/folder for fat32 (3G)           |"
   echo "| compress-passwd FILE_OR_FOLDER            | compresses a file/folder with password protection |"
