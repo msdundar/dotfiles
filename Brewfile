@@ -51,6 +51,7 @@ brew "python"
 brew "rbenv"
 brew "redis", restart_service: true
 brew "ruby-build"
+brew "scc"
 brew "tmate"
 brew "tmux"
 brew "tree"
